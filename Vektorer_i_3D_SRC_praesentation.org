@@ -1,0 +1,258 @@
+#+title: En hurtig men avanceret indføring til vektorer i 3D samt krydsprodukter
+#+subtitle: SRC - Ladede partikler i magnetfelt
+#+author: 2.x
+#+date: Vibenshus Gymnasium
+# Themes: beige|black|blood|league|moon|night|serif|simple|sky|solarized|white
+#+reveal_theme: black
+#+reveal_title_slide: <h2>%t</h2><h3>%s</h3><h4>%a</h4><h4>%d</h4>
+#+reveal_title_slide_background: #1b192e
+#+reveal_default_slide_background: #1b192e
+#+reveal_extra_options: slideNumber:"c/t",progress:true,transition:"slide",navigationMode:"default",history:false,hash:true
+# #+reveal_extra_attr: style="color:red"
+#+options: toc:nil num:nil tags:nil timestamp:nil ^:{}
+
+* I kender allerede...
+#+reveal_html: <div style="font-size: 60%;">
+...lidt til vektorer i 2D.
+
+#+DOWNLOADED: screenshot @ 2022-11-21 09:08:51
+#+attr_html: :width 600px
+#+attr_latex: :width 7cm
+[[file:img/2022-11-21_09-08-51_screenshot.png]]
+
+* Så én dimension mere...
+#+reveal_html: <div style="font-size: 60%;">
+...skulle vel ikke være noget problem.
+
+#+begin_export html
+<iframe
+width="600"
+height="400"
+src="./intro_vektorer_3d_geogebra.html"
+title=""
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+#+end_export
+
+- Aflæs koordinaterne til de 4 vektorer $\vec{a}$, $\vec{b}$, $\vec{c}$ og $\vec{d}$.
+
+* 2D vs 3D
+#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="display: grid; grid-template-columns: 50% 50%;">
+#+reveal_html: <div>
+*2D*
+
+\begin{align*}
+\vec{a} &= \begin{pmatrix} a_x \\ a_y \end{pmatrix} \\
+\vec{b} &= \begin{pmatrix} b_x \\ b_y \end{pmatrix} \\
+\vec{a}\pm \vec{b} &= \begin{pmatrix} a_x \\ a_y \end{pmatrix} \pm \begin{pmatrix} b_x \\ b_y\end{pmatrix} = \begin{pmatrix} a_x \pm b_x \\ a_y \pm b_y \end{pmatrix} \\
+\left| \vec{a} \right| &= \sqrt{a_x^2+a_y^2}
+\end{align*}
+
+#+reveal_html: </div>
+
+#+reveal_html: <div>
+*3D*
+\begin{align*}
+\vec{a} &= \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \\
+\vec{b} &= \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} \\
+\vec{a}\pm \vec{b} &= \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \pm \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} = \begin{pmatrix} a_x \pm b_x \\ a_y \pm b_y \\ a_z \pm b_z \end{pmatrix} \\
+\left| \vec{a} \right| &= ?
+\end{align*}
+#+reveal_html: </div>
+#+reveal_html: </div>
+
+#+attr_reveal: :frag (appear)
+- Ja, hvordan søren finder man længden af en vektor i 3 dimensioner?
+- Lad os tænke os om!
+
+* Simple opgaver
+#+reveal_html: <div style="font-size: 60%;">
+- Her er lidt at lege med omkring vektorer i 3D.
+- Der er både forklaringer, opgaver og facitliste på en gang. Det er jo et sandt kinderæg af lækkerhed. :)
+
+#+attr_html: :width 400px
+#+attr_latex: :width 7cm
+[[./Materialer/01_Vektorer_i_3D_introduktion.pdf][file:./img/2022-11-21_10-20-09_screenshot.png]]
+
+* En enhedsvektor?
+#+reveal_html: <div style="font-size: 60%;">
+#+attr_reveal: :frag (appear)
+- Ja, hvad kan det mon være? +20 s. med sidemakkeren+.
+- Når nej, det stod jo i dokumentet.
+- Det er en vektor med en *længde* på 1.
+- (Og som går i samme retning, som en oprindelig vektor).
+- I skal nu *bevise*
+  $$\overrightarrow{e_a} = \begin{pmatrix} \frac{a_x}{\lvert \vec{a} \rvert} \\ \frac{a_y}{\lvert \vec{a} \rvert} \\ \frac{a_z}{\lvert \vec{a} \rvert}  \end{pmatrix} = \frac{1}{\lvert \vec{a} \rvert} \cdot \vec{a} \quad \text{for} \quad \vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_{z} \end{pmatrix}$$
+- Hint: Bare beregn længden af enhedsvektoren.
+
+  
+* Projek-hva'-for-no'et?
+#+reveal_html: <div style="font-size: 50%;">
+I dokumentet står der:
+
+#+begin_quote
+For vektorerne 
+
+$$\vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \text{ og } \vec{b} = \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}$$
+
+kan projektionen af $\vec{a}$ på $\vec{b}$ findes på følgende måde:
+
+$$\overrightarrow{a_b} = \frac{\vec{a} \cdot \vec{b}}{\vec{b}\cdot \vec{b}} \cdot \vec{b} =\frac{\vec{a} \cdot \vec{b} }{\lvert \vec{b} \rvert^2} \cdot \vec{b} = \frac{a_x \cdot b_x + a_y \cdot b_y + a_z \cdot b_z}{b_x^2 + b_y^2 + b_z^2} \cdot \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}\,.$$
+#+end_quote
+
+Men, hvad skal det nu betyde?
+
+** Projektion
+#+reveal_html: <div style="font-size: 60%;">
+#+begin_quote
+Lys med en lygte på både $\vec{a}$ og $\vec{b}$ så lyset falder vinkelret ind på $\vec{b}$. /Projektionen/ af $\vec{a}$ på $\vec{b}$ er da /skyggen/ af $\vec{a}$ på $\vec{b}$.
+#+end_quote
+
+#+DOWNLOADED: https://app.abacus.dk/bundles/abacuscore/textbook_images/projektionsol_new.png @ 2020-04-25 20:09:21
+#+attr_html: :width 400px
+[[./img/projektion.png]]
+
+Lånt fra webmatematik.
+
+*** Bevis
+#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="display: grid; grid-template-columns: auto 40%;">
+#+reveal_html: <div>
+Se på figuren, og kom så bare igang.
+
+\begin{align*}
+\overrightarrow{a_b} &= \left| \vec{a} \right| \cdot \cos(v) \cdot \overrightarrow{e_b} \\
+\overrightarrow{a_b} &= \left| \vec{a} \right| \cdot \cos(v) \cdot \frac{1}{\left| \vec{b} \right|} \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\left| \vec{a} \right|}{ \left| \vec{b} \right|}\cdot \cos(v) \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\left| \vec{a} \right|}{ \left| \vec{b} \right|}\cdot \left( \frac{\vec{a} \cdot \vec{b}}{\left| \vec{a} \right| \cdot \left| \vec{b} \right|}\right) \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\vec{a} \cdot \vec{b}}{\left| \vec{b} \right| \cdot \left| \vec{b} \right|}\cdot \vec{b} = \frac{\vec{a} \cdot \vec{b}}{\left| \vec{b} \right|^2}\cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\vec{a} \cdot \vec{b}}{\vec{b} \cdot \vec{b}}\cdot \vec{b}
+\end{align*}
+#+reveal_html: </div>
+
+#+reveal_html: <div>
+[[./img/projektion_bevis.png]]
+
+- Man skal holde tungen lige i munden.
+- Vi tager den lige på tavlen en gang til for prins Knud (og alle andre).
+#+reveal_html: </div>
+#+reveal_html: </div>
+
+
+* Diverse +prut lugter+ produkter
+** Skalarproduktet
+#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="display: grid; grid-template-columns: auto 40%;">
+#+reveal_html: <div>
+I kender allerede skalarproduktet/prikproduktet for vektorer i 2D.
+
+$$\vec{a}\cdot \vec{b} = a_x\cdot b_x+a_y\cdot b_y$$
+
+I 3D er der ikke så meget nyt under solen. I kan næsten gætte, hvordan det skal se ud.
+
+#+begin_quote
+$$\vec{a} \cdot \vec{b} = a_x\cdot b_x+a_y\cdot b_y + a_z \cdot b_z$$
+#+end_quote
+
+Lad os se nærmere på det.
+
+#+reveal_html: </div>
+
+#+reveal_html: <div>
+#+attr_html: :width 600px
+#+attr_latex: :width 7cm
+[[./Materialer/06_Bonus_skalarprodukt.pdf][file:img/2022-11-21_12-15-24_screenshot.png]]
+
+#+reveal_html: </div>
+#+reveal_html: </div>
+
+** Krydsproduktet
+[[./img/monty-python-pose.gif]]
+
+
+** Tværvektorer i 2D og 3D
+#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="display: grid; grid-template-columns: auto 50%;">
+#+reveal_html: <div>
+*2D*
+
+- I 2D kan man danne en vinkelret vektor til en given vektor vha en /tværvektor/.
+
+$$\vec{a} = \begin{pmatrix} a_x \\ a_y\end{pmatrix} \,,\, \hat{a} = \begin{pmatrix} - a_y \\ a_x\end{pmatrix}$$
+
+
+#+DOWNLOADED: screenshot @ 2022-11-21 12:47:12
+#+attr_html: :width 300px
+[[file:img/2022-11-21_12-47-12_screenshot.png]]
+#+reveal_html: </div>
+
+#+reveal_html: <div>
+*3D*
+
+- I 3D kan man danne en vektor, som står vinkelret på *2* vektorer vha /krydsproduktet/.
+
+#+DOWNLOADED: screenshot @ 2022-11-21 13:01:08
+#+attr_html: :width 600px
+file:img/2022-11-21_13-01-08_screenshot.png
+#+reveal_html: </div>
+#+reveal_html: </div>
+
+** Opgaver
+#+reveal_html: <div style="font-size: 60%;">
+- Indtast følgende vektorer i geogebra 3D. Det gør man ved at skrive f.eks. ~a=(1,0,0)~, altså med små bogstaver.
+  \begin{align*}
+  \vec{i} &= \begin{pmatrix} 1\\0\\0 \end{pmatrix} & \vec{j} &= \begin{pmatrix} 0\\1\\0 \end{pmatrix} & \vec{k} &= \begin{pmatrix} 0\\0\\1 \end{pmatrix} \\
+  \vec{a} &= \begin{pmatrix} 2\\1\\3 \end{pmatrix} & \vec{b} &= \begin{pmatrix} 2\\1\\2 \end{pmatrix} & \vec{c} &= \begin{pmatrix} -2\\-1\\-2 \end{pmatrix}
+  \end{align*}
+
+- Undersøg alle de mulige (eller så mange som muligt) krydsprodukter vha kommandoen ~Kryds(<vektor>, <vektor>)~.
+  Hvad kan I finde af sammenhænge?
+** Krydsprodukt
+#+reveal_html: <div style="font-size: 60%;">
+Hvis man har givet to vektorer
+$$\vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \text{ og } \vec{b} = \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}$$
+
+kan man bestemme /krydsproduktet/ på følgende måde:
+
+$$\boxed{\vec{a} \times \vec{b} = \begin{pmatrix} a_x \\a_y\\a_z \end{pmatrix} \times \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} =\begin{pmatrix} \begin{vmatrix} a_y & b_y \\ a_z & b_z \end{vmatrix} \\ -\begin{vmatrix}a_x & b_x \\ a_z & b_z\end{vmatrix} \\ \begin{vmatrix} a_x & b_x \\ a_y & b_y\end{vmatrix}\end{pmatrix} = \begin{pmatrix} a_y b_z - a_z b_y \\ -a_x b_z + a_z b_x \\ a_x b_y - a_y b_x \end{pmatrix} = \lvert \vec{a} \rvert \cdot \lvert \vec{b} \rvert \cdot \sin (\theta) \cdot \vec{n}}$$
+
+
+** Opgave
+#+reveal_html: <div style="font-size: 60%;">
+Følgende 4 vektorer er givet:
+
+\begin{align*}
+\vec{a} &= \begin{pmatrix} -9 \\ 10 \\ -14 \end{pmatrix} & \vec{b} &= \begin{pmatrix} 3 \\ -12 \\ 5 \end{pmatrix} & \vec{c} &= \begin{pmatrix} \sqrt{15} \\ \sqrt{8} \\ \sqrt{6} \end{pmatrix} & \vec{d} &= \begin{pmatrix} -6 \\ -8 \\ 1 \end{pmatrix}
+\end{align*}
+
+- Beregn koordinaterne til de 5 vektorer
+  - $\vec{a} \times \vec{b}$
+  - $\vec{a} \times \vec{c}$
+  - $\vec{a} \times \vec{d}$
+  - $\vec{b} \times \vec{c}$
+  - $\vec{c} \times \vec{d}$
+
+    
+** Opgave
+#+reveal_html: <div style="font-size: 60%;">
+- Bestem de krydsprodukter, I bliver bedt om på følgende side. I kan klikke på billedet for at komme derhen.
+- (hvis I opdaterer siden kommer der nye opgaver):
+
+#+attr_html: :width 500px
+[[https://www.webmatematik.dk/lektioner/matematik-a/vektorer-i-3d/krydsprodukt/opgaver#!/exercises/13030][file:img/2022-11-22_08-01-55_screenshot.png]]
+
+** Krydsprodukter i deltaljen
+#+reveal_html: <div style="font-size: 60%;">
+Lad os se nærmere på krydsproduktet
+
+#+DOWNLOADED: screenshot @ 2022-11-22 08:05:44
+#+attr_html: :width 300px
+#+attr_latex: :width 7cm
+[[./Materialer/05_Bonus_vektorprodukt.pdf][file:img/2022-11-22_08-05-44_screenshot.png]]
+
+* MATRIX
+
+[[./img/matrix-hovedpersoner.png]]

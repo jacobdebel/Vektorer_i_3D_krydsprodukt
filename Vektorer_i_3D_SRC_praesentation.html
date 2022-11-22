@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<title>En hurtig men avanceret indføring til vektorer i 3D samt krydsprodukter</title>
+<meta name="author" content="2.x"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css" id="theme"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="#1b192e">
+<h2>En hurtig men avanceret indføring til vektorer i 3D samt krydsprodukter</h2><h3>SRC - Ladede partikler i magnetfelt</h3><h4>2.x</h4><h4>Vibenshus Gymnasium</h4>
+</section>
+
+<section>
+<section id="slide-orgb5d8156" data-background="#1b192e">
+<h2 id="orgb5d8156">I kender allerede&#x2026;</h2>
+<div style="font-size: 60%;">
+<p>
+&#x2026;lidt til vektorer i 2D.
+</p>
+
+
+<div id="orgaea160d" class="figure">
+<p><img src="img/2022-11-21_09-08-51_screenshot.png" alt="2022-11-21_09-08-51_screenshot.png" width="600px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3fa2a6a" data-background="#1b192e">
+<h2 id="org3fa2a6a">Så én dimension mere&#x2026;</h2>
+<div style="font-size: 60%;">
+<p>
+&#x2026;skulle vel ikke være noget problem.
+</p>
+
+<iframe
+width="600"
+height="400"
+src="./intro_vektorer_3d_geogebra.html"
+title=""
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+<ul>
+<li>Aflæs koordinaterne til de 4 vektorer \(\vec{a}\), \(\vec{b}\), \(\vec{c}\) og \(\vec{d}\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf449a31" data-background="#1b192e">
+<h2 id="orgf449a31">2D vs 3D</h2>
+<div style="font-size: 60%;">
+<div style="display: grid; grid-template-columns: 50% 50%;">
+<div>
+<p>
+<b>2D</b>
+</p>
+
+<div>
+\begin{align*}
+\vec{a} &= \begin{pmatrix} a_x \\ a_y \end{pmatrix} \\
+\vec{b} &= \begin{pmatrix} b_x \\ b_y \end{pmatrix} \\
+\vec{a}\pm \vec{b} &= \begin{pmatrix} a_x \\ a_y \end{pmatrix} \pm \begin{pmatrix} b_x \\ b_y\end{pmatrix} = \begin{pmatrix} a_x \pm b_x \\ a_y \pm b_y \end{pmatrix} \\
+\left| \vec{a} \right| &= \sqrt{a_x^2+a_y^2}
+\end{align*}
+
+</div>
+
+</div>
+
+<div>
+<p>
+<b>3D</b>
+</p>
+<div>
+\begin{align*}
+\vec{a} &= \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \\
+\vec{b} &= \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} \\
+\vec{a}\pm \vec{b} &= \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \pm \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} = \begin{pmatrix} a_x \pm b_x \\ a_y \pm b_y \\ a_z \pm b_z \end{pmatrix} \\
+\left| \vec{a} \right| &= ?
+\end{align*}
+
+</div>
+</div>
+</div>
+
+<ul>
+<li class="fragment appear">Ja, hvordan søren finder man længden af en vektor i 3 dimensioner?</li>
+<li class="fragment appear">Lad os tænke os om!</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7df8ba8" data-background="#1b192e">
+<h2 id="org7df8ba8">Simple opgaver</h2>
+<div style="font-size: 60%;">
+<ul>
+<li>Her er lidt at lege med omkring vektorer i 3D.</li>
+<li>Der er både forklaringer, opgaver og facitliste på en gang. Det er jo et sandt kinderæg af lækkerhed. :)</li>
+
+</ul>
+
+
+<div id="org80a291c" class="figure">
+<p><a href="./Materialer/01_Vektorer_i_3D_introduktion.pdf" width="400px"><img src="./img/2022-11-21_10-20-09_screenshot.png" alt="2022-11-21_10-20-09_screenshot.png" width="400px" /></a>
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org13065b9" data-background="#1b192e">
+<h2 id="org13065b9">En enhedsvektor?</h2>
+<div style="font-size: 60%;">
+<ul>
+<li class="fragment appear">Ja, hvad kan det mon være? <del>20 s. med sidemakkeren</del>.</li>
+<li class="fragment appear">Når nej, det stod jo i dokumentet.</li>
+<li class="fragment appear">Det er en vektor med en <b>længde</b> på 1.</li>
+<li class="fragment appear">(Og som går i samme retning, som en oprindelig vektor).</li>
+<li class="fragment appear">I skal nu <b>bevise</b>
+\[\overrightarrow{e_a} = \begin{pmatrix} \frac{a_x}{\lvert \vec{a} \rvert} \\ \frac{a_y}{\lvert \vec{a} \rvert} \\ \frac{a_z}{\lvert \vec{a} \rvert}  \end{pmatrix} = \frac{1}{\lvert \vec{a} \rvert} \cdot \vec{a} \quad \text{for} \quad \vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_{z} \end{pmatrix}\]</li>
+<li class="fragment appear">Hint: Bare beregn længden af enhedsvektoren.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org1aaef27" data-background="#1b192e">
+<h2 id="org1aaef27">Projek-hva'-for-no'et?</h2>
+<div style="font-size: 50%;">
+<p>
+I dokumentet står der:
+</p>
+
+<blockquote>
+<p>
+For vektorerne 
+</p>
+
+<p>
+\[\vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \text{ og } \vec{b} = \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}\]
+</p>
+
+<p>
+kan projektionen af \(\vec{a}\) på \(\vec{b}\) findes på følgende måde:
+</p>
+
+<p>
+\[\overrightarrow{a_b} = \frac{\vec{a} \cdot \vec{b}}{\vec{b}\cdot \vec{b}} \cdot \vec{b} =\frac{\vec{a} \cdot \vec{b} }{\lvert \vec{b} \rvert^2} \cdot \vec{b} = \frac{a_x \cdot b_x + a_y \cdot b_y + a_z \cdot b_z}{b_x^2 + b_y^2 + b_z^2} \cdot \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}\,.\]
+</p>
+</blockquote>
+
+<p>
+Men, hvad skal det nu betyde?
+</p>
+
+</section>
+<section id="slide-org24e9a7e" data-background="#1b192e">
+<h3 id="org24e9a7e">Projektion</h3>
+<div style="font-size: 60%;">
+<blockquote>
+<p>
+Lys med en lygte på både \(\vec{a}\) og \(\vec{b}\) så lyset falder vinkelret ind på \(\vec{b}\). <i>Projektionen</i> af \(\vec{a}\) på \(\vec{b}\) er da <i>skyggen</i> af \(\vec{a}\) på \(\vec{b}\).
+</p>
+</blockquote>
+
+
+<div id="org3a67ccd" class="figure">
+<p><img src="./img/projektion.png" alt="projektion.png" width="400px" />
+</p>
+</div>
+
+<p>
+Lånt fra webmatematik.
+</p>
+
+</section>
+<section id="slide-org06b0312" data-background="#1b192e">
+<h4 id="org06b0312">Bevis</h4>
+<div style="font-size: 60%;">
+<div style="display: grid; grid-template-columns: auto 40%;">
+<div>
+<p>
+Se på figuren, og kom så bare igang.
+</p>
+
+<div>
+\begin{align*}
+\overrightarrow{a_b} &= \left| \vec{a} \right| \cdot \cos(v) \cdot \overrightarrow{e_b} \\
+\overrightarrow{a_b} &= \left| \vec{a} \right| \cdot \cos(v) \cdot \frac{1}{\left| \vec{b} \right|} \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\left| \vec{a} \right|}{ \left| \vec{b} \right|}\cdot \cos(v) \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\left| \vec{a} \right|}{ \left| \vec{b} \right|}\cdot \left( \frac{\vec{a} \cdot \vec{b}}{\left| \vec{a} \right| \cdot \left| \vec{b} \right|}\right) \cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\vec{a} \cdot \vec{b}}{\left| \vec{b} \right| \cdot \left| \vec{b} \right|}\cdot \vec{b} = \frac{\vec{a} \cdot \vec{b}}{\left| \vec{b} \right|^2}\cdot \vec{b} \\
+\overrightarrow{a_b} &= \frac{\vec{a} \cdot \vec{b}}{\vec{b} \cdot \vec{b}}\cdot \vec{b}
+\end{align*}
+
+</div>
+</div>
+
+<div>
+
+<div id="orgd88f477" class="figure">
+<p><img src="./img/projektion_bevis.png" alt="projektion_bevis.png" />
+</p>
+</div>
+
+<ul>
+<li>Man skal holde tungen lige i munden.</li>
+<li>Vi tager den lige på tavlen en gang til for prins Knud (og alle andre).</li>
+
+</ul>
+</div>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org597c165" data-background="#1b192e">
+<h2 id="org597c165">Diverse <del>prut lugter</del> produkter</h2>
+<div class="outline-text-2" id="text-org597c165">
+</div>
+</section>
+<section id="slide-org28ad4ee" data-background="#1b192e">
+<h3 id="org28ad4ee">Skalarproduktet</h3>
+<div style="font-size: 60%;">
+<div style="display: grid; grid-template-columns: auto 40%;">
+<div>
+<p>
+I kender allerede skalarproduktet/prikproduktet for vektorer i 2D.
+</p>
+
+<p>
+\[\vec{a}\cdot \vec{b} = a_x\cdot b_x+a_y\cdot b_y\]
+</p>
+
+<p>
+I 3D er der ikke så meget nyt under solen. I kan næsten gætte, hvordan det skal se ud.
+</p>
+
+<blockquote>
+<p>
+\[\vec{a} \cdot \vec{b} = a_x\cdot b_x+a_y\cdot b_y + a_z \cdot b_z\]
+</p>
+</blockquote>
+
+<p>
+Lad os se nærmere på det.
+</p>
+
+</div>
+
+<div>
+
+<div id="org0c01563" class="figure">
+<p><a href="./Materialer/06_Bonus_skalarprodukt.pdf" width="600px"><img src="img/2022-11-21_12-15-24_screenshot.png" alt="2022-11-21_12-15-24_screenshot.png" width="600px" /></a>
+</p>
+</div>
+
+</div>
+</div>
+
+</section>
+<section id="slide-org94f2fcf" data-background="#1b192e">
+<h3 id="org94f2fcf">Krydsproduktet</h3>
+
+<div id="org06d9692" class="figure">
+<p><img src="./img/monty-python-pose.gif" alt="monty-python-pose.gif" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgff7a30a" data-background="#1b192e">
+<h3 id="orgff7a30a">Tværvektorer i 2D og 3D</h3>
+<div style="font-size: 60%;">
+<div style="display: grid; grid-template-columns: auto 50%;">
+<div>
+<p>
+<b>2D</b>
+</p>
+
+<ul>
+<li>I 2D kan man danne en vinkelret vektor til en given vektor vha en <i>tværvektor</i>.</li>
+
+</ul>
+
+<p>
+\[\vec{a} = \begin{pmatrix} a_x \\ a_y\end{pmatrix} \,,\, \hat{a} = \begin{pmatrix} - a_y \\ a_x\end{pmatrix}\]
+</p>
+
+
+
+<div id="org32b4d82" class="figure">
+<p><img src="img/2022-11-21_12-47-12_screenshot.png" alt="2022-11-21_12-47-12_screenshot.png" width="300px" />
+</p>
+</div>
+</div>
+
+<div>
+<p>
+<b>3D</b>
+</p>
+
+<ul>
+<li>I 3D kan man danne en vektor, som står vinkelret på <b>2</b> vektorer vha <i>krydsproduktet</i>.</li>
+
+</ul>
+
+
+<div id="org75a37c9" class="figure">
+<p><img src="img/2022-11-21_13-01-08_screenshot.png" alt="2022-11-21_13-01-08_screenshot.png" width="600px" />
+</p>
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-org153b5cc" data-background="#1b192e">
+<h3 id="org153b5cc">Opgaver</h3>
+<div style="font-size: 60%;">
+<ul>
+<li><p>
+Indtast følgende vektorer i geogebra 3D. Det gør man ved at skrive f.eks. <code>a=(1,0,0)</code>, altså med små bogstaver.
+</p>
+<div>
+\begin{align*}
+\vec{i} &= \begin{pmatrix} 1\\0\\0 \end{pmatrix} & \vec{j} &= \begin{pmatrix} 0\\1\\0 \end{pmatrix} & \vec{k} &= \begin{pmatrix} 0\\0\\1 \end{pmatrix} \\
+\vec{a} &= \begin{pmatrix} 2\\1\\3 \end{pmatrix} & \vec{b} &= \begin{pmatrix} 2\\1\\2 \end{pmatrix} & \vec{c} &= \begin{pmatrix} -2\\-1\\-2 \end{pmatrix}
+\end{align*}
+
+</div></li>
+
+<li>Undersøg alle de mulige (eller så mange som muligt) krydsprodukter vha kommandoen <code>Kryds(&lt;vektor&gt;, &lt;vektor&gt;)</code>.
+Hvad kan I finde af sammenhænge?</li>
+
+</ul>
+</section>
+<section id="slide-orge54afcf" data-background="#1b192e">
+<h3 id="orge54afcf">Krydsprodukt</h3>
+<div style="font-size: 60%;">
+<p>
+Hvis man har givet to vektorer
+\[\vec{a} = \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix} \text{ og } \vec{b} = \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix}\]
+</p>
+
+<p>
+kan man bestemme <i>krydsproduktet</i> på følgende måde:
+</p>
+
+<p>
+\[\boxed{\vec{a} \times \vec{b} = \begin{pmatrix} a_x \\a_y\\a_z \end{pmatrix} \times \begin{pmatrix} b_x \\ b_y \\ b_z \end{pmatrix} =\begin{pmatrix} \begin{vmatrix} a_y & b_y \\ a_z & b_z \end{vmatrix} \\ -\begin{vmatrix}a_x & b_x \\ a_z & b_z\end{vmatrix} \\ \begin{vmatrix} a_x & b_x \\ a_y & b_y\end{vmatrix}\end{pmatrix} = \begin{pmatrix} a_y b_z - a_z b_y \\ -a_x b_z + a_z b_x \\ a_x b_y - a_y b_x \end{pmatrix} = \lvert \vec{a} \rvert \cdot \lvert \vec{b} \rvert \cdot \sin (\theta) \cdot \vec{n}}\]
+</p>
+
+
+</section>
+<section id="slide-org5a1345c" data-background="#1b192e">
+<h3 id="org5a1345c">Opgave</h3>
+<div style="font-size: 60%;">
+<p>
+Følgende 4 vektorer er givet:
+</p>
+
+<div>
+\begin{align*}
+\vec{a} &= \begin{pmatrix} -9 \\ 10 \\ -14 \end{pmatrix} & \vec{b} &= \begin{pmatrix} 3 \\ -12 \\ 5 \end{pmatrix} & \vec{c} &= \begin{pmatrix} \sqrt{15} \\ \sqrt{8} \\ \sqrt{6} \end{pmatrix} & \vec{d} &= \begin{pmatrix} -6 \\ -8 \\ 1 \end{pmatrix}
+\end{align*}
+
+</div>
+
+<ul>
+<li>Beregn koordinaterne til de 5 vektorer
+<ul>
+<li>\(\vec{a} \times \vec{b}\)</li>
+<li>\(\vec{a} \times \vec{c}\)</li>
+<li>\(\vec{a} \times \vec{d}\)</li>
+<li>\(\vec{b} \times \vec{c}\)</li>
+<li>\(\vec{c} \times \vec{d}\)</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+<section id="slide-org1cd0445" data-background="#1b192e">
+<h3 id="org1cd0445">Opgave</h3>
+<div style="font-size: 60%;">
+<ul>
+<li>Bestem de krydsprodukter, I bliver bedt om på følgende side. I kan klikke på billedet for at komme derhen.</li>
+<li>(hvis I opdaterer siden kommer der nye opgaver):</li>
+
+</ul>
+
+
+<div id="org88cbb2f" class="figure">
+<p><a href="https://www.webmatematik.dk/lektioner/matematik-a/vektorer-i-3d/krydsprodukt/opgaver#!/exercises/13030" width="500px"><img src="img/2022-11-22_08-01-55_screenshot.png" alt="2022-11-22_08-01-55_screenshot.png" width="500px" /></a>
+</p>
+</div>
+
+</section>
+<section id="slide-orgd85d04d" data-background="#1b192e">
+<h3 id="orgd85d04d">Krydsprodukter i deltaljen</h3>
+<div style="font-size: 60%;">
+<p>
+Lad os se nærmere på krydsproduktet
+</p>
+
+
+<div id="org2659a16" class="figure">
+<p><a href="./Materialer/05_Bonus_vektorprodukt.pdf" width="300px"><img src="img/2022-11-22_08-05-44_screenshot.png" alt="2022-11-22_08-05-44_screenshot.png" width="300px" /></a>
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3b98fde" data-background="#1b192e">
+<h2 id="org3b98fde">MATRIX</h2>
+
+<div id="orge2c24e6" class="figure">
+<p><img src="./img/matrix-hovedpersoner.png" alt="matrix-hovedpersoner.png" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: false,
+slideNumber: 'c/t',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'slide',
+transitionSpeed: 'default',
+slideNumber:"c/t",progress:true,transition:"slide",navigationMode:"default",history:false,hash:true,
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
