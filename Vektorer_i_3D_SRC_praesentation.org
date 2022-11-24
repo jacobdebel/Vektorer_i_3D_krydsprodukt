@@ -335,12 +335,13 @@ k \cdot \mathbf{A} &= k \cdot\begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} 
 
   
 *** Nu er det jeres tur
-#+reveal_html: <div style="font-size: 45%;">
+#+reveal_html: <div style="font-size: 40%;">
 \begin{align*}
 &a)\begin{bmatrix} 2 & 4 \\ 1 & 3 \end{bmatrix} \, \begin{bmatrix} -3 & 2 \\ -1 & 4 \end{bmatrix} & &b) \begin{bmatrix} -3 & 2 \\ -1 & 4 \end{bmatrix} \,\begin{bmatrix} 2 & 4 \\ 1 & 3 \end{bmatrix} & &c) \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \, \begin{bmatrix} 2 & 4 \\ 1 & 3 \end{bmatrix} & &d) \begin{bmatrix} -3 & -2 \\ -1 & 4 \end{bmatrix} \, \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \\
 &e) \begin{bmatrix} 2 & 4 & 2 \\ 1 & 3 & 0 \\2 & 1 & 4 \end{bmatrix} \,\begin{bmatrix} 3 & 2 & 1 \\ 1 & 4 & 2 \\ 0 & 1 & 1 \end{bmatrix} & &f) \begin{bmatrix} 2 & 4 & 2 & 2 \\1 & 3 & 0 & 1 \end{bmatrix} \, \begin{bmatrix}3 & 2 & 1 \\ 1 & 4 & 2 \\ 0 & 1 & 1 \\ 1 & 2 & 3 \end{bmatrix} & &g) \begin{bmatrix} 2 & 4 & 2 \\ 1 & 3 & 0 \\2 & 1 & 4 \end{bmatrix} \, \begin{bmatrix} 3 \\ 1 \\ 2 \end{bmatrix} & &h) \begin{bmatrix} 1 & 1 & 1 \end{bmatrix} \, \begin{bmatrix} 2 & 4 & 2 \\ 1 & 3 & 0 \\2 & 1 & 4 \end{bmatrix}
 \end{align*}
 
+#+reveal_html: <div style="font-size: 150%;">
 - Kan I finde nogle sammenhænge?
 
 
@@ -351,25 +352,80 @@ k \cdot \mathbf{A} &= k \cdot\begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} 
 
 
 \begin{align*}
-\mathbf{a} \times \mathbf{b} &= \left[ \mathbf{a} \right]_x \, \mathbf{b} = \begin{bmatrix} 0 & - a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x & 0 \end{bmatrix} \, \begin{bmatrix} b_x \\ b_y \\ b_z \end{bmatrix}
+\mathbf{a} \times \mathbf{b} &= \left[ \mathbf{a} \right]_\times \, \mathbf{b} = \begin{bmatrix} 0 & - a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x & 0 \end{bmatrix} \, \begin{bmatrix} b_x \\ b_y \\ b_z \end{bmatrix}
 \end{align*}
-- $\left[ \mathbf{a} \right]_x$ er en /antisymmetrisk/ matrice, som vil sige at $\left[ \mathbf{a} \right]_x^T = - \left[ \mathbf{a} \right]_x$.
+- $\left[ \mathbf{a} \right]_\times$ er en /antisymmetrisk/ matrice, som vil sige at $\left[ \mathbf{a} \right]_\times^T = - \left[ \mathbf{a} \right]_\times$.
 - Prøv det lige en gang! Virker det?
 
   
 ** Hvordan husker man matricen?
-#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="font-size: 50%;">
 - Hvordan skal man dog kunne huske, hvordan matricen er opbygget?
 
 \begin{align*}
-\left[ \mathbf{a} \right]_x = \begin{bmatrix} 0 & - a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x & 0 \end{bmatrix}
+\left[ \mathbf{a} \right]_\times = \begin{bmatrix} 0 & - a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x & 0 \end{bmatrix}
 \end{align*}
 
-- WIP
+#+attr_reveal: :frag (appear)
+- Jo, nu skal I høre...
+- Hver *søjle* i $\left[ \mathbf{a} \right]_{\times}$ fås ved at beregne krydsproduktet (det vi er ved at definere her) mellem vektoren $\mathbf{a}$ og hver af *enhedsvektorerne*.
+  $$\left[ \mathbf{a} \right]_{\times,i} = \mathbf{a} \times \mathbf{e_i} \,,\, i \in \{1,2,3\}$$
+- Eller man kan skrives den fulde matrix $$\left[ \mathbf{a} \right]_{\times} = \sum_{i=1}^3 \left( \mathbf{a}\times \mathbf{e_i} \right) \otimes \mathbf{e_i} = \sum_{i=1}^3 \left( \mathbf{a}\times \mathbf{e_i}\right) \, \mathbf{e_i}^T $$
+  hvor $\otimes$ er det *ydre produkt*.
 
   
-** Determinanter
+** Vi må se på en anden måde at skrive krydsproduktet op på.
 
-** Determinanter og ydre produkter
+** Krydsprodukt med determinant
+#+reveal_html: <div style="font-size: 60%;">
+- Krydsproduktet kan også skrives som den følgende /formelle/ *determinant*
+
+$$\mathbf{a} \times \mathbf{b} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+a_x & a_y & a_z \\
+b_x & b_y & a_z \end{vmatrix}$$
+
+#+attr_reveal: :frag (appear)
+- Men hvad pokker er en determinant så?
+  
+** Determinanter
+#+reveal_html: <div style="font-size: 60%;">
+#+reveal_html: <div style="display: grid; grid-template-columns: auto 50%;">
+#+reveal_html: <div>
+- Determinanter knytter sig til /kvadratiske/ matricer.
+- Hvis matricen beskriver koefficienterne i et lineær ligningssystem (mere om det senere, måske), så er der en løsning til ligningssystemet, hvis determinanten er forskellig fra nul.
+#+reveal_html: </div>
+
+#+reveal_html: <div>
+- Determinant af 2x2-matrix
+  [[./img/determinant_2x2.png]]
+
+- Determinant af 3x3-matrix
+  [[./img/determinant_3x3.png]]
+#+reveal_html: </div>
+#+reveal_html: </div>
+
+*** Eksempler + opgaver
+#+reveal_html: <div style="font-size: 60%;">
+*Eksempler*
+\begin{align*}
+\mathbf{A} &= \begin{bmatrix} 4 & 5 \\ 2 & 3 \end{bmatrix}  & \mathbf{B} &= \begin{bmatrix} 2 & 4 & 2 \\1 & 3 & 0 \\ 2 &1 &4 \end{bmatrix}
+\end{align*}
+
+*Opgaver*
+\begin{align*}
+\mathbf{C} &= \begin{bmatrix} 4 & -1 \\ -3 & 2 \end{bmatrix} & \mathbf{D} &= \begin{bmatrix} 3 & 2 & 1 \\ 1 & 4 & 2 \\ 0 & 1 & 1 \end{bmatrix}
+\end{align*}
+
+*** Alternativ determinantberegning
+#+reveal_html: <div style="font-size: 60%;">
+- "Udvikling langs 1. række"
+  
+[[./img/determinant_3x3_alternativ.jpg]]
+
+- Princippet kan så bruges på endnu større matricer som f.eks. 4x4 eller 5x5.
+- Det bliver dog *meget* tidskrævende.
+** Nu kan vi prøve igen
+#+reveal_html: <div style="font-size: 60%;">
+- Nu kan vi endelig bestemme $\left[ \mathbf{a} \right]_{\times}$
 
 * Hvad kan man ellers bruge matriceregning til?
